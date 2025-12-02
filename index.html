@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Gordura | O Protocolo que Seca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --gray-dark: #0A0A0A;
+            --gray-card: #111111;
+            --gray-border: #222222;
+            --red: #E31B23;
+            --red-glow: rgba(227, 27, 35, 0.6);
+            --red-dark: rgba(227, 27, 35, 0.15);
+            --silver-start: #C0C0C0;
+            --silver-end: #E8E8E8;
+            --white: #FFFFFF;
+            --gray-light: #B0B0B0;
+            --gold: #FFD700;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Typography */
+        .headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 8vw, 64px);
+            line-height: 1.1;
+            background: linear-gradient(180deg, var(--silver-start) 0%, var(--silver-end) 50%, var(--silver-start) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 6vw, 48px);
+            text-align: center;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, var(--silver-start) 0%, var(--silver-end) 50%, var(--silver-start) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-light);
+            font-size: clamp(14px, 2vw, 18px);
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(18px, 3vw, 24px);
+            letter-spacing: 2px;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(227, 27, 35, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(227, 27, 35, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(16px, 2.5vw, 20px);
+            letter-spacing: 2px;
+            padding: 16px 40px;
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--red);
+            box-shadow: 0 0 20px var(--red-glow);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(227, 27, 35, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(227, 27, 35, 0.5);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ========================================
+           SEÇÃO 1 | HERO - SPLIT LAYOUT
+        ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(ellipse at 30% 50%, var(--red-dark) 0%, var(--black) 70%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+        }
+
+        .hero-content {
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                order: 2;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(227, 27, 35, 0.2);
+            border: 1px solid var(--red);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge span {
+            animation: flicker 1.5s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero .headline {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        @media (max-width: 900px) {
+            .hero .headline {
+                text-align: center;
+            }
+        }
+
+        .hero-subheadline {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: var(--gray-light);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-cta {
+                align-items: center;
+            }
+        }
+
+        .hero-microcopy {
+            font-size: 14px;
+            color: var(--gray-light);
+        }
+
+        .hero-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 0.8s ease 0.2s both;
+        }
+
+        @media (max-width: 900px) {
+            .hero-logo {
+                order: 1;
+            }
+        }
+
+        .hero-logo img {
+            max-width: 100%;
+            width: 450px;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(227, 27, 35, 0.4));
+        }
+
+        @media (max-width: 900px) {
+            .hero-logo img {
+                width: 280px;
+            }
+        }
+
+        .hero-arrows {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .hero-arrows svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--red);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ========================================
+           SEÇÃO 2 | O PROBLEMA + CAMINHO VISUAL
+        ======================================== */
+        .problem {
+            background: var(--gray-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+        }
+
+        .problem-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .problem-intro h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 6vw, 52px);
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+        }
+
+        .problem-intro h2 .red {
+            color: var(--red);
+        }
+
+        .problem-intro p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--gray-light);
+            line-height: 1.8;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .problem-card {
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            border-color: var(--red);
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+        }
+
+        .problem-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: var(--gray-light);
+        }
+
+        /* Caminho Visual */
+        .solution-path {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .solution-path-title {
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(24px, 5vw, 36px);
+            color: var(--white);
+            margin-bottom: 48px;
+            letter-spacing: 2px;
+        }
+
+        .path-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .path-container {
+                flex-direction: column;
+            }
+        }
+
+        .path-step {
+            flex: 1;
+            min-width: 180px;
+            max-width: 220px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .path-step {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        .path-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gray-card);
+            border: 3px solid var(--gray-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 16px;
+            transition: all 0.3s ease;
+        }
+
+        .path-step:hover .path-icon {
+            border-color: var(--red);
+            box-shadow: 0 0 30px var(--red-glow);
+            transform: scale(1.1);
+        }
+
+        .path-step.active .path-icon {
+            background: var(--red);
+            border-color: var(--red);
+            box-shadow: 0 0 40px var(--red-glow);
+        }
+
+        .path-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            color: var(--red);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .path-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--white);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .path-desc {
+            font-size: 13px;
+            color: var(--gray-light);
+        }
+
+        .path-arrow {
+            font-size: 28px;
+            color: var(--red);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 900px) {
+            .path-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .path-line {
+            position: absolute;
+            top: 45px;
+            left: 12%;
+            right: 12%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gray-border), var(--red), var(--gray-border));
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .path-line {
+                display: none;
+            }
+        }
+
+        /* ========================================
+           SEÇÃO 3 | PROVA SOCIAL - CARROSSEL
+        ======================================== */
+        .social-proof {
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .proof-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 6vw, 48px);
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .proof-header h2 .red {
+            color: var(--red);
+        }
+
+        .proof-header p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--gray-light);
+        }
+
+        /* Carrossel */
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            animation: scroll 35s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-374px * 6)); }
+        }
+
+        .testimonial-card {
+            flex: 0 0 350px;
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--red);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--gray-border), var(--gray-card));
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .testimonial-image-placeholder {
+            font-size: 14px;
+            color: var(--gray-light);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .testimonial-image-placeholder span {
+            display: block;
+            font-size: 48px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        .testimonial-result {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(227, 27, 35, 0.5);
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 220px;
+            left: 20px;
+            font-size: 60px;
+            font-family: Georgia, serif;
+            color: var(--red);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            line-height: 1.6;
+            min-height: 72px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--red), #8B0000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: var(--white);
+            border: 2px solid var(--red);
+        }
+
+        .testimonial-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-info p {
+            font-size: 13px;
+            color: var(--gray-light);
+        }
+
+        /* Stats com Ícones */
+        .proof-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            padding: 48px 20px;
+            border-top: 1px solid var(--gray-border);
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .stat-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--red), #8B0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 0 30px var(--red-glow);
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 8vw, 52px);
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            max-width: 150px;
+        }
+
+        /* ========================================
+           SEÇÃO 4 | A SOLUÇÃO
+        ======================================== */
+        .solution {
+            background: linear-gradient(180deg, var(--gray-dark) 0%, var(--black) 100%);
+            position: relative;
+        }
+
+        .solution-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .solution-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 6vw, 52px);
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+        }
+
+        .solution-header h2 .red {
+            color: var(--red);
+        }
+
+        .solution-header p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--gray-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .solution-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .solution-comparison {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .comparison-side {
+            padding: 40px;
+            border-radius: 16px;
+            min-height: 360px;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-side {
+                text-align: center;
+            }
+        }
+
+        .comparison-before {
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            opacity: 0.85;
+        }
+
+        .comparison-before:hover {
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .comparison-after {
+            background: var(--gray-card);
+            border: 2px solid var(--red);
+            box-shadow: 0 0 40px rgba(227, 27, 35, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-after::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--red-dark) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-header {
+                justify-content: center;
+            }
+        }
+
+        .comparison-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .comparison-before .comparison-icon {
+            background: var(--gray-border);
+        }
+
+        .comparison-after .comparison-icon {
+            background: var(--red);
+        }
+
+        .comparison-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .comparison-before .comparison-label {
+            color: var(--gray-light);
+        }
+
+        .comparison-after .comparison-label {
+            color: var(--white);
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-list {
+                text-align: left;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+
+        .comparison-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 15px;
+        }
+
+        .comparison-before .comparison-list li {
+            color: var(--gray-light);
+        }
+
+        .comparison-after .comparison-list li {
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .comparison-list li span {
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .comparison-divider {
+            width: 4px;
+            height: 280px;
+            background: var(--red);
+            border-radius: 2px;
+            box-shadow: 0 0 20px var(--red-glow);
+            position: relative;
+        }
+
+        .comparison-divider::after {
+            content: 'VS';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            padding: 10px 8px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-divider {
+                width: 100%;
+                height: 4px;
+            }
+            .comparison-divider::after {
+                padding: 8px 16px;
+            }
+        }
+
+        /* CTA Método Natural */
+        .solution-cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--gray-card), rgba(227, 27, 35, 0.1));
+            border: 2px solid var(--red);
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .solution-cta h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(24px, 5vw, 36px);
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .solution-cta .natural-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid #22C55E;
+            border-radius: 50px;
+            padding: 12px 24px;
+            margin-bottom: 24px;
+            color: #22C55E;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .solution-cta .natural-badge span {
+            font-size: 22px;
+        }
+
+        .solution-cta p {
+            font-size: 17px;
+            color: var(--gray-light);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .solution-cta p strong {
+            color: var(--white);
+        }
+
+        .solution-cta .highlight-text {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .solution-cta .btn-primary {
+            margin-top: 16px;
+        }
+
+        /* ========================================
+           SEÇÃO 5 | A JORNADA
+        ======================================== */
+        .journey {
+            background: var(--gray-dark);
+            position: relative;
+        }
+
+        .journey::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 769px) {
+            .timeline {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                top: 25px;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, var(--red), var(--gray-border));
+                border-radius: 2px;
+            }
+
+            .timeline-item {
+                flex: 1;
+                text-align: center;
+                position: relative;
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 15px;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(180deg, var(--red), var(--gray-border));
+                border-radius: 2px;
+            }
+
+            .timeline-item {
+                position: relative;
+                padding-bottom: 40px;
+                text-align: left;
+            }
+
+            .timeline-item:last-child {
+                padding-bottom: 0;
+            }
+        }
+
+        .timeline-dot {
+            width: 50px;
+            height: 50px;
+            background: var(--black);
+            border: 4px solid var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px var(--red-glow);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                position: absolute;
+                left: -40px;
+                top: 0;
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+        }
+
+        .timeline-content {
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--red);
+            transform: translateY(-5px);
+        }
+
+        .timeline-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            color: var(--red);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--gray-light);
+        }
+
+        /* ========================================
+           SEÇÃO 6 | EMPILHAMENTO
+        ======================================== */
+        .value-stack {
+            background: var(--black);
+        }
+
+        .stack-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stack-item {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            align-items: center;
+            gap: 24px;
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stack-item:hover {
+            border-color: var(--red);
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 600px) {
+            .stack-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        .stack-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            background: linear-gradient(180deg, var(--silver-start), var(--silver-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stack-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .stack-info p {
+            font-size: 14px;
+            color: var(--gray-light);
+        }
+
+        .stack-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--red);
+            text-shadow: 0 0 20px var(--red-glow);
+        }
+
+        .stack-total {
+            max-width: 800px;
+            margin: 48px auto 0;
+            background: linear-gradient(135deg, var(--gray-card), rgba(227, 27, 35, 0.15));
+            border: 3px solid var(--red);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(227, 27, 35, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stack-total::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(227, 27, 35, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .stack-total-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(22px, 4vw, 32px);
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stack-total-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 10vw, 80px);
+            color: var(--red);
+            text-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(227, 27, 35, 0.4);
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stack-total-emoji {
+            font-size: clamp(40px, 8vw, 64px);
+            animation: wobble 2s infinite;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .stack-total-subtext {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(20px, 4vw, 28px);
+            color: var(--white);
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        /* ========================================
+           SEÇÃO 7 | OFERTAS + GARANTIA
+        ======================================== */
+        .offers {
+            background: var(--gray-dark);
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        @media (max-width: 768px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .offer-card {
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .offer-card.featured {
+            border: 2px solid var(--red);
+            background: linear-gradient(180deg, var(--gray-card) 0%, rgba(227, 27, 35, 0.1) 100%);
+            box-shadow: 0 0 50px rgba(227, 27, 35, 0.3);
+            transform: scale(1.02);
+        }
+
+        .offer-card.featured:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(227, 27, 35, 0.5);
+        }
+
+        .offer-type {
+            font-size: 14px;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .offer-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .offer-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .offer-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-border);
+            font-size: 15px;
+            color: var(--gray-light);
+        }
+
+        .offer-features li:last-child {
+            border-bottom: none;
+        }
+
+        .offer-features li span {
+            color: var(--red);
+            font-size: 18px;
+        }
+
+        .offer-price {
+            margin-bottom: 24px;
+        }
+
+        .offer-price-installment {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--red);
+            letter-spacing: 2px;
+        }
+
+        .offer-price-full {
+            font-size: 14px;
+            color: var(--gray-light);
+            margin-top: 8px;
+        }
+
+        .offer-headline {
+            font-size: 14px;
+            color: var(--gray-light);
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        /* Diferença dos planos */
+        .plans-difference {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 20px;
+            padding: 40px;
+            overflow-x: auto;
+        }
+
+        .plans-difference h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(22px, 4vw, 32px);
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+        }
+
+        .plans-table {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+            min-width: 500px;
+        }
+
+        .plans-table-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            color: var(--white);
+            padding: 14px;
+            background: var(--gray-border);
+            border-radius: 8px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .plans-table-header.featured {
+            background: var(--red);
+        }
+
+        .plans-table-cell {
+            padding: 14px;
+            border-bottom: 1px solid var(--gray-border);
+            font-size: 14px;
+            color: var(--gray-light);
+        }
+
+        .plans-table-cell.feature {
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .plans-table-cell.center {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .check {
+            color: var(--red);
+        }
+
+        /* Garantia */
+        .guarantee-section {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--gray-card), rgba(255, 215, 0, 0.05));
+            border: 2px solid var(--gold);
+            border-radius: 24px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .guarantee-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 32px;
+            }
+        }
+
+        .guarantee-badge {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #FFD700, #B8860B);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .guarantee-badge {
+                margin: 0 auto;
+            }
+        }
+
+        .guarantee-badge::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+        }
+
+        .guarantee-badge-icon {
+            font-size: 40px;
+        }
+
+        .guarantee-badge-days {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--black);
+            margin-top: -4px;
+        }
+
+        .guarantee-badge-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 12px;
+            color: var(--black);
+            letter-spacing: 1px;
+        }
+
+        .guarantee-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(22px, 4vw, 32px);
+            color: var(--gold);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .guarantee-content p {
+            font-size: 15px;
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .guarantee-content p strong {
+            color: var(--white);
+        }
+
+        .guarantee-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .guarantee-list {
+                text-align: left;
+                max-width: 320px;
+                margin: 24px auto 0;
+            }
+        }
+
+        .guarantee-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        .guarantee-list li span {
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        /* ========================================
+           SEÇÃO 8 | FAQ + CTA FINAL
+        ======================================== */
+        .faq-final {
+            background: var(--black);
+            position: relative;
+        }
+
+        .faq-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .faq-item {
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--red);
+        }
+
+        .faq-item:nth-child(odd) {
+            background: var(--gray-dark);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--red);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--red);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--red);
+            color: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 24px 24px;
+            color: var(--gray-light);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* CTA Final */
+        .final-cta {
+            background: radial-gradient(ellipse at center, rgba(227, 27, 35, 0.25) 0%, transparent 70%);
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .final-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 7vw, 52px);
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 40px var(--red-glow);
+        }
+
+        .final-subheadline {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: var(--gray-light);
+            margin-bottom: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-urgency {
+            display: inline-block;
+            background: rgba(227, 27, 35, 0.2);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            padding: 12px 24px;
+            color: var(--red);
+            font-weight: 600;
+            margin-bottom: 40px;
+            animation: pulse 2s infinite;
+        }
+
+        .final-microcopy {
+            font-size: 14px;
+            color: var(--gray-light);
+            margin-top: 16px;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            width: 48px;
+            height: 32px;
+            background: var(--gray-card);
+            border: 1px solid var(--gray-border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--gray-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-dark);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .footer-logo {
+            width: 120px;
+            margin-bottom: 24px;
+            filter: grayscale(100%) brightness(0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        .footer-copy {
+            color: var(--gray-light);
+            font-size: 12px;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+    </style>
+</head>
+<body>
+    <!-- SEÇÃO 1 | HERO -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🔥</span>
+                    +50.000 transformações
+                </div>
+                
+                <h1 class="headline">Você já tentou de tudo para secar... mas a balança não se move?</h1>
+                
+                <p class="hero-subheadline">Chega de dietas genéricas e treinos sem sentido. O 100 Gordura é o único sistema completo que une treino, nutrição e acompanhamento em um só lugar — para você finalmente ter resultados reais.</p>
+                
+                <div class="hero-cta">
+                    <a href="#ofertas" class="btn-primary">QUERO SECAR AGORA</a>
+                    <p class="hero-microcopy">Acesso imediato. Cancele quando quiser.</p>
+                </div>
+            </div>
+            
+            <div class="hero-logo">
+                <img src="logo-100gordura.png" alt="100 Gordura">
+            </div>
+        </div>
+        
+        <div class="hero-arrows">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2 | O PROBLEMA -->
+    <section class="section problem">
+        <div class="container">
+            <div class="problem-intro animate-on-scroll">
+                <h2>VOCÊ <span class="red">NÃO</span> É O PROBLEMA.<br>O MÉTODO É.</h2>
+                <p>Você já baixou dezenas de PDFs de dieta. Já seguiu vídeos aleatórios no YouTube. Já pagou caro em nutricionista que te deu uma planilha genérica. E mesmo assim... <strong>nada funciona</strong>.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card animate-on-scroll stagger-1">
+                    <div class="problem-icon">📂</div>
+                    <h3>PDFs ESQUECIDOS</h3>
+                    <p>Aquele ebook de dieta que você baixou e nunca mais abriu.</p>
+                </div>
+                
+                <div class="problem-card animate-on-scroll stagger-2">
+                    <div class="problem-icon">📊</div>
+                    <h3>PLANILHAS CONFUSAS</h3>
+                    <p>Tabelas com macros que ninguém entende. Cálculos impossíveis.</p>
+                </div>
+                
+                <div class="problem-card animate-on-scroll stagger-3">
+                    <div class="problem-icon">🎬</div>
+                    <h3>VÍDEOS SEM LÓGICA</h3>
+                    <p>Treinos aleatórios do YouTube sem sequência, sem progressão.</p>
+                </div>
+                
+                <div class="problem-card animate-on-scroll stagger-4">
+                    <div class="problem-icon">💸</div>
+                    <h3>DINHEIRO JOGADO FORA</h3>
+                    <p>Nutricionistas caros que não entendem seu corpo.</p>
+                </div>
+            </div>
+
+            <!-- Caminho Visual -->
+            <div class="solution-path animate-on-scroll">
+                <h3 class="solution-path-title">E SE EXISTISSE UM SISTEMA QUE JUNTASSE TUDO ISSO?</h3>
+                
+                <div class="path-container">
+                    <div class="path-line"></div>
+                    
+                    <div class="path-step">
+                        <div class="path-icon">😓</div>
+                        <span class="path-label">AGORA</span>
+                        <h4 class="path-title">VOCÊ ESTÁ AQUI</h4>
+                        <p class="path-desc">Confusa e frustrada</p>
+                    </div>
+                    
+                    <div class="path-arrow">→</div>
+                    
+                    <div class="path-step">
+                        <div class="path-icon">📱</div>
+                        <span class="path-label">PASSO 1</span>
+                        <h4 class="path-title">ACESSA O APP</h4>
+                        <p class="path-desc">Tudo em um só lugar</p>
+                    </div>
+                    
+                    <div class="path-arrow">→</div>
+                    
+                    <div class="path-step">
+                        <div class="path-icon">🔥</div>
+                        <span class="path-label">PASSO 2</span>
+                        <h4 class="path-title">SEGUE O PROTOCOLO</h4>
+                        <p class="path-desc">Treino + Dieta + Acompanhamento</p>
+                    </div>
+                    
+                    <div class="path-arrow">→</div>
+                    
+                    <div class="path-step active">
+                        <div class="path-icon">💪</div>
+                        <span class="path-label">15 DIAS</span>
+                        <h4 class="path-title">RESULTADO!</h4>
+                        <p class="path-desc">Corpo transformado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3 | PROVA SOCIAL -->
+    <section class="section social-proof">
+        <div class="container">
+            <div class="proof-header animate-on-scroll">
+                <h2>EXISTE. E JÁ <span class="red">TRANSFORMOU +50.000 VIDAS</span></h2>
+                <p>Não são promessas vazias. São resultados reais de pessoas reais.</p>
+            </div>
+        </div>
+        
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-6kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Eu já tinha tentado de tudo. Em 30 dias, perdi 6kg e 8cm de cintura.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info"><h4>Maria Clara</h4><p>34 anos | 30 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-8kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Nunca pensei que um aplicativo mudaria minha vida. Em 45 dias, perdi 8kg!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JS</div>
+                        <div class="testimonial-info"><h4>Juliana Santos</h4><p>28 anos | 45 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-10cm</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Minha barriga finalmente secou! Perdi 10cm de cintura em 60 dias.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AF</div>
+                        <div class="testimonial-info"><h4>Ana Ferreira</h4><p>41 anos | 60 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-5kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Achei que seria promessa vazia. Em 15 dias já vi resultado na balança!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PR</div>
+                        <div class="testimonial-info"><h4>Patrícia Reis</h4><p>39 anos | 15 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-7kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Depois de 2 gestações, achei impossível. Estou mais magra que antes!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LM</div>
+                        <div class="testimonial-info"><h4>Luciana Mendes</h4><p>36 anos | 50 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-12kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">O VIP foi o diferencial. 12kg em 90 dias sem passar fome. Incrível!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CS</div>
+                        <div class="testimonial-info"><h4>Camila Silva</h4><p>32 anos | 90 dias</p></div>
+                    </div>
+                </div>
+                
+                <!-- Duplicados para loop -->
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-6kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Eu já tinha tentado de tudo. Em 30 dias, perdi 6kg e 8cm de cintura.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info"><h4>Maria Clara</h4><p>34 anos | 30 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-8kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Nunca pensei que um aplicativo mudaria minha vida. Em 45 dias, perdi 8kg!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JS</div>
+                        <div class="testimonial-info"><h4>Juliana Santos</h4><p>28 anos | 45 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-10cm</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Minha barriga finalmente secou! Perdi 10cm de cintura em 60 dias.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AF</div>
+                        <div class="testimonial-info"><h4>Ana Ferreira</h4><p>41 anos | 60 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-5kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Achei que seria promessa vazia. Em 15 dias já vi resultado na balança!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PR</div>
+                        <div class="testimonial-info"><h4>Patrícia Reis</h4><p>39 anos | 15 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-7kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Depois de 2 gestações, achei impossível. Estou mais magra que antes!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LM</div>
+                        <div class="testimonial-info"><h4>Luciana Mendes</h4><p>36 anos | 50 dias</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <span class="testimonial-result">-12kg</span>
+                        <div class="testimonial-image-placeholder"><span>📸</span>Foto Antes/Depois</div>
+                    </div>
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">O VIP foi o diferencial. 12kg em 90 dias sem passar fome. Incrível!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CS</div>
+                        <div class="testimonial-info"><h4>Camila Silva</h4><p>32 anos | 90 dias</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="proof-stats animate-on-scroll">
+                <div class="stat-item">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">+50.000</div>
+                    <div class="stat-label">Transformações Reais</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Dias para Ver Resultados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">Taxa de Satisfação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4 | A SOLUÇÃO -->
+    <section class="section solution">
+        <div class="container">
+            <div class="solution-header animate-on-scroll">
+                <h2>APRESENTAMOS O <span class="red">100 GORDURA</span></h2>
+                <p>O protocolo que transformou mais de 50 mil pessoas. Um único sistema que une treino, nutrição e acompanhamento — agora no seu bolso.</p>
+            </div>
+
+            <div class="solution-comparison">
+                <div class="comparison-side comparison-before animate-on-scroll">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">😩</div>
+                        <span class="comparison-label">SEM O 100 GORDURA</span>
+                    </div>
+                    <ul class="comparison-list">
+                        <li><span>❌</span> PDFs perdidos no celular</li>
+                        <li><span>❌</span> Planilhas de dieta confusas</li>
+                        <li><span>❌</span> Vídeos sem sequência lógica</li>
+                        <li><span>❌</span> Treinos genéricos</li>
+                        <li><span>❌</span> Informação demais, resultado de menos</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-divider"></div>
+                
+                <div class="comparison-side comparison-after animate-on-scroll">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">🚀</div>
+                        <span class="comparison-label">COM O 100 GORDURA</span>
+                    </div>
+                    <ul class="comparison-list">
+                        <li><span>✅</span> Um único app no celular</li>
+                        <li><span>✅</span> Treino do dia pronto</li>
+                        <li><span>✅</span> Dieta personalizada</li>
+                        <li><span>✅</span> Vídeos com execução correta</li>
+                        <li><span>✅</span> Atualização mensal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="solution-cta animate-on-scroll">
+                <h3>EM 15 DIAS, SEU REFLEXO NO ESPELHO VAI TE SURPREENDER</h3>
+                
+                <div class="natural-badge">
+                    <span>🌿</span>
+                    MÉTODO 100% NATURAL — SEM MOUNJARO, SEM OZEMPIC, SEM ATALHOS
+                </div>
+                
+                <p>Enquanto muitas recorrem a medicamentos caros com efeitos colaterais pesados, o <strong>100 Gordura</strong> usa o que realmente funciona: <span class="highlight-text">treino inteligente + alimentação estratégica</span>.</p>
+                <p>Um método <strong>natural e acelerado</strong> que respeita seu corpo e entrega resultados reais.</p>
+                
+                <a href="#ofertas" class="btn-primary">QUERO COMEÇAR AGORA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5 | A JORNADA -->
+    <section class="section journey">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">SUA TRANSFORMAÇÃO EM 4 FASES</h2>
+            <p class="section-subtitle animate-on-scroll">Do primeiro dia ao corpo que você sempre quis.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll stagger-1">
+                    <div class="timeline-dot">📍</div>
+                    <div class="timeline-content">
+                        <span class="timeline-label">DIA 0</span>
+                        <h3 class="timeline-title">ENTRADA</h3>
+                        <p class="timeline-desc">Acesso liberado. Seu protocolo começa agora.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll stagger-2">
+                    <div class="timeline-dot">🔥</div>
+                    <div class="timeline-content">
+                        <span class="timeline-label">DIA 15</span>
+                        <h3 class="timeline-title">BARRIGA SECA</h3>
+                        <p class="timeline-desc">O método de choque. Diferença no espelho.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll stagger-3">
+                    <div class="timeline-dot">✨</div>
+                    <div class="timeline-content">
+                        <span class="timeline-label">DIA 30</span>
+                        <h3 class="timeline-title">ZERO CELULITE</h3>
+                        <p class="timeline-desc">Treinos para definir as curvas certas.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll stagger-4">
+                    <div class="timeline-dot">💪</div>
+                    <div class="timeline-content">
+                        <span class="timeline-label">MÊS 2+</span>
+                        <h3 class="timeline-title">HIPERTROFIA</h3>
+                        <p class="timeline-desc">Evolução constante, sem estagnação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6 | EMPILHAMENTO -->
+    <section class="section value-stack">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">O QUE VOCÊ VAI LEVAR HOJE</h2>
+            <p class="section-subtitle animate-on-scroll">Acesso completo ao ecossistema que já transformou mais de 50 mil vidas.</p>
+            
+            <div class="stack-list">
+                <div class="stack-item animate-on-scroll stagger-1">
+                    <span class="stack-number">01</span>
+                    <div class="stack-info"><h3>CONSULTORIA INDIVIDUAL</h3><p>8 Semanas de Acompanhamento com Equipe Will Portela</p></div>
+                    <span class="stack-value">R$ 997</span>
+                </div>
+                <div class="stack-item animate-on-scroll stagger-2">
+                    <span class="stack-number">02</span>
+                    <div class="stack-info"><h3>PROTOCOLO 100 GORDURA</h3><p>O método de choque para secar. Protocolo 15 dias.</p></div>
+                    <span class="stack-value">R$ 197</span>
+                </div>
+                <div class="stack-item animate-on-scroll stagger-3">
+                    <span class="stack-number">03</span>
+                    <div class="stack-info"><h3>PROTOCOLO BARRIGA NEGATIVA</h3><p>Método exclusivo para definir o abdômen.</p></div>
+                    <span class="stack-value">R$ 147</span>
+                </div>
+                <div class="stack-item animate-on-scroll stagger-4">
+                    <span class="stack-number">04</span>
+                    <div class="stack-info"><h3>PROTOCOLO ZERO CELULITE</h3><p>Treinos específicos para estética feminina.</p></div>
+                    <span class="stack-value">R$ 97</span>
+                </div>
+                <div class="stack-item animate-on-scroll stagger-5">
+                    <span class="stack-number">05</span>
+                    <div class="stack-info"><h3>BIBLIOTECA DE TREINOS</h3><p>Acesso total ao acervo de execuções.</p></div>
+                    <span class="stack-value">R$ 97</span>
+                </div>
+                <div class="stack-item animate-on-scroll stagger-6">
+                    <span class="stack-number">06</span>
+                    <div class="stack-info"><h3>NUTRIÇÃO DESCOMPLICADA</h3><p>Monte sua dieta sem nutricionista caro.</p></div>
+                    <span class="stack-value">R$ 97</span>
+                </div>
+                <div class="stack-item animate-on-scroll stagger-7">
+                    <span class="stack-number">07</span>
+                    <div class="stack-info"><h3>ACESSO AO APP</h3><p>A ferramenta com atualizações mensais.</p></div>
+                    <span class="stack-value">R$ 358/ano</span>
+                </div>
+            </div>
+            
+            <div class="stack-total animate-on-scroll">
+                <p class="stack-total-label"><strong>SOMA TOTAL DO PROTOCOLO:</strong></p>
+                <p class="stack-total-value">R$ 2.114,00 <span class="stack-total-emoji">😱</span></p>
+                <p class="stack-total-subtext">MAS HOJE, VOCÊ NÃO PAGARÁ TUDO ISSO.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 7 | OFERTAS -->
+    <section id="ofertas" class="section offers">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">ESCOLHA SEU PLANO E COMECE AGORA</h2>
+            
+            <div class="offers-grid">
+                <div class="offer-card animate-on-scroll stagger-1">
+                    <p class="offer-type">Standard</p>
+                    <h3 class="offer-title">ASSINATURA ANUAL APP</h3>
+                    <ul class="offer-features">
+                        <li><span>✓</span> 1 Ano ao Ecossistema 100 Gordura</li>
+                        <li><span>✓</span> Todas as Fases Inclusas</li>
+                        <li><span>✓</span> Atualizações Mensais</li>
+                        <li><span>✓</span> Biblioteca de Treinos</li>
+                        <li><span>✓</span> Nutrição Descomplicada</li>
+                    </ul>
+                    <div class="offer-price">
+                        <p class="offer-price-installment">12x R$ 29,90</p>
+                        <p class="offer-price-full">ou R$ 297,00 à vista</p>
+                    </div>
+                    <p class="offer-headline">Tudo isso por menos de 1 real por dia</p>
+                    <a href="#" class="btn-secondary">QUERO O APP</a>
+                </div>
+                
+                <div class="offer-card featured animate-on-scroll stagger-2">
+                    <span class="offer-badge">MAIS VENDIDO</span>
+                    <p class="offer-type">VIP</p>
+                    <h3 class="offer-title">APP + CONSULTORIA</h3>
+                    <ul class="offer-features">
+                        <li><span>✓</span> <strong>Tudo do App incluído</strong></li>
+                        <li><span>✓</span> 8 Semanas de Acompanhamento Individual</li>
+                        <li><span>✓</span> Equipe Will Portela te acompanhando</li>
+                        <li><span>✓</span> Suporte humano e ajuste fino</li>
+                        <li><span>✓</span> Contato próximo via WhatsApp</li>
+                    </ul>
+                    <div class="offer-price">
+                        <p class="offer-price-installment">12x R$ 49,90</p>
+                        <p class="offer-price-full">ou R$ 497,00 à vista</p>
+                    </div>
+                    <a href="#" class="btn-primary">QUERO ACOMPANHAMENTO VIP</a>
+                </div>
+            </div>
+
+            <div class="plans-difference animate-on-scroll">
+                <h3>🔍 ENTENDA A DIFERENÇA ENTRE OS PLANOS</h3>
+                <div class="plans-table">
+                    <div class="plans-table-header">RECURSO</div>
+                    <div class="plans-table-header">STANDARD</div>
+                    <div class="plans-table-header featured">VIP</div>
+                    
+                    <div class="plans-table-cell feature">Acesso ao App 100 Gordura</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Todos os Protocolos</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Biblioteca de Treinos</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Nutrição Descomplicada</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Atualizações Mensais</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">8 Semanas de Consultoria Individual</div>
+                    <div class="plans-table-cell center">—</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Equipe Will Portela</div>
+                    <div class="plans-table-cell center">—</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Suporte via WhatsApp</div>
+                    <div class="plans-table-cell center">—</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                    
+                    <div class="plans-table-cell feature">Ajuste fino do protocolo</div>
+                    <div class="plans-table-cell center">—</div>
+                    <div class="plans-table-cell center"><span class="check">✓</span></div>
+                </div>
+            </div>
+
+            <div class="guarantee-section animate-on-scroll">
+                <div class="guarantee-badge">
+                    <span class="guarantee-badge-icon">🛡️</span>
+                    <span class="guarantee-badge-days">7 DIAS</span>
+                    <span class="guarantee-badge-text">GARANTIA</span>
+                </div>
+                <div class="guarantee-content">
+                    <h3>GARANTIA INCONDICIONAL DE 7 DIAS</h3>
+                    <p>Nós acreditamos tanto no poder do 100 Gordura que assumimos <strong>todo o risco por você</strong>.</p>
+                    <p>Funciona assim: você faz sua assinatura, acessa o app, começa o protocolo. Se por qualquer motivo não ficar satisfeita — basta enviar um e-mail em até 7 dias e devolvemos <strong>100% do seu dinheiro</strong>. Sem perguntas.</p>
+                    <ul class="guarantee-list">
+                        <li><span>✓</span> Reembolso integral em até 7 dias</li>
+                        <li><span>✓</span> Sem perguntas ou justificativas</li>
+                        <li><span>✓</span> Processo simples: um e-mail resolve</li>
+                        <li><span>✓</span> Dinheiro de volta em até 7 dias úteis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 8 | FAQ + CTA FINAL -->
+    <section class="section faq-final">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">AINDA TEM DÚVIDAS? A GENTE RESPONDE.</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll stagger-1">
+                    <button class="faq-question">Funciona mesmo para quem nunca treinou?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Sim! O protocolo foi desenvolvido tanto para iniciantes quanto para quem já treina. Você recebe treinos adequados ao seu nível.</p></div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-2">
+                    <button class="faq-question">Preciso de academia ou equipamentos?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Temos opções para academia e para casa. Você escolhe o que funciona melhor para sua rotina.</p></div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-3">
+                    <button class="faq-question">E se eu não gostar? Tem garantia?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100% do seu dinheiro. Sem perguntas.</p></div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-4">
+                    <button class="faq-question">Como funciona o app?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Após a compra, você recebe acesso imediato. Basta baixar o app, fazer login e seu protocolo já estará lá.</p></div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-5">
+                    <button class="faq-question">Qual a diferença entre Standard e VIP?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>O Standard dá acesso completo ao app. O VIP adiciona 8 semanas de acompanhamento individual com a equipe Will Portela via WhatsApp.</p></div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-6">
+                    <button class="faq-question">Posso cancelar quando quiser?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>A assinatura é anual, mas você pode cancelar a renovação a qualquer momento. Sem multas.</p></div>
+                </div>
+            </div>
+
+            <div class="final-cta animate-on-scroll">
+                <div class="final-content">
+                    <h2 class="final-headline">SUA TRANSFORMAÇÃO COMEÇA COM UM CLIQUE</h2>
+                    <p class="final-subheadline">Você está a 15 dias de olhar no espelho e se surpreender. A única coisa que te separa do seu melhor corpo é essa decisão.</p>
+                    <p class="final-urgency">⚡ Oferta válida apenas hoje. Amanhã o preço volta ao normal.</p>
+                    <div>
+                        <a href="#ofertas" class="btn-primary" style="font-size: 28px; padding: 24px 64px;">QUERO COMEÇAR AGORA</a>
+                        <p class="final-microcopy">Acesso imediato | Garantia de 7 dias | Cancele quando quiser</p>
+                    </div>
+                    <div class="payment-methods">
+                        <div class="payment-icon">💳</div>
+                        <div class="payment-icon">VISA</div>
+                        <div class="payment-icon">MC</div>
+                        <div class="payment-icon">PIX</div>
+                        <div class="payment-icon">BOLETO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="logo-100gordura.png" alt="100 Gordura" class="footer-logo">
+        <div class="footer-links">
+            <a href="#">Termos de Uso</a>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Contato</a>
+            <a href="#">Suporte</a>
+        </div>
+        <p class="footer-copy">© 2024 100 Gordura. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
